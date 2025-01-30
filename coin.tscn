@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://24erq768mdxj"]
+
+[ext_resource type="Texture2D" uid="uid://baxb0scyunvo1" path="res://assets/props/coin_spin-Sheet.png" id="1_kkqvy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycixo"]
+atlas = ExtResource("1_kkqvy")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f31s"]
+atlas = ExtResource("1_kkqvy")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ml75a"]
+atlas = ExtResource("1_kkqvy")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qaghl"]
+atlas = ExtResource("1_kkqvy")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csvfl"]
+atlas = ExtResource("1_kkqvy")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2g3x"]
+atlas = ExtResource("1_kkqvy")
+region = Rect2(400, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5e82p"]
+atlas = ExtResource("1_kkqvy")
+region = Rect2(480, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5ntv"]
+atlas = ExtResource("1_kkqvy")
+region = Rect2(560, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tub0f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycixo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6f31s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ml75a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qaghl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csvfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2g3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5e82p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5ntv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mmbv7"]
+radius = 12.0416
+
+[node name="coin" type="StaticBody2D" groups=["collectable"]]
+position = Vector2(279, 164)
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_tub0f")
+autoplay = "default"
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mmbv7")

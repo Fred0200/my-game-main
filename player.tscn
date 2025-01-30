@@ -461,32 +461,30 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1b7pb"]
-radius = 12.0
+radius = 11.0
 height = 58.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_75m60"]
-radius = 36.0139
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_li6i0"]
+radius = 12.0
+height = 58.0
 
 [node name="player" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_7lh1s")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
-position = Vector2(9, -31)
+position = Vector2(-2, -28)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ewfmg")
 animation = &"roll"
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(2, 0)
 shape = SubResource("CapsuleShape2D_1b7pb")
 
 [node name="Area coin" type="Area2D" parent="."]
-position = Vector2(1, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area coin"]
-position = Vector2(1, 0)
-shape = SubResource("CircleShape2D_75m60")
+shape = SubResource("CapsuleShape2D_li6i0")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
