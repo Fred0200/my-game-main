@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://01ulxfopwr7q"]
+[gd_scene load_steps=73 format=3 uid="uid://01ulxfopwr7q"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_7lh1s"]
 [ext_resource type="Texture2D" uid="uid://rb7sd0etrovp" path="res://assets/FreeKnight_v1/Colour2/Outline/120x80_PNGSheets/_Attack.png" id="2_tdiov"]
@@ -468,6 +468,9 @@ height = 58.0
 radius = 12.0
 height = 58.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nk1po"]
+size = Vector2(31.5, 30)
+
 [node name="player" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_7lh1s")
@@ -476,7 +479,9 @@ script = ExtResource("1_7lh1s")
 position = Vector2(-2, -28)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ewfmg")
-animation = &"roll"
+animation = &"attack_1"
+frame = 3
+frame_progress = 1.0
 
 [node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_1b7pb")
@@ -489,13 +494,23 @@ shape = SubResource("CapsuleShape2D_li6i0")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
+unique_name_in_owner = true
+offset_left = 508.0
+offset_top = 29.0
+offset_right = 548.0
+offset_bottom = 52.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_top = 0
 limit_bottom = 324
 drag_horizontal_enabled = true
 drag_left_margin = 0.5
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="collision" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(35, 6)
+shape = SubResource("RectangleShape2D_nk1po")
+disabled = true
 
 [connection signal="body_entered" from="Area coin" to="." method="_on_area_2d_body_entered"]
