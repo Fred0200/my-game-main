@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://caerib4hsce6q"]
+[gd_scene load_steps=67 format=3 uid="uid://caerib4hsce6q"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_f4ifp"]
 [ext_resource type="Texture2D" uid="uid://b24huwpc3tomj" path="res://assets/enemy/Skeleton_White/Skeleton_Without_VFX/Skeleton_01_White_Attack1.png" id="1_v23j5"]
@@ -433,6 +433,9 @@ height = 92.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ie3gs"]
 radius = 328.002
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1cc5w"]
+size = Vector2(134, 90.5)
+
 [node name="enemy" type="CharacterBody2D"]
 script = ExtResource("1_f4ifp")
 
@@ -440,7 +443,7 @@ script = ExtResource("1_f4ifp")
 position = Vector2(1, -8)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_bnbhy")
-animation = &"walking"
+animation = &"attack 1"
 autoplay = "idle"
 
 [node name="collision" type="CollisionShape2D" parent="."]
@@ -448,6 +451,7 @@ position = Vector2(-5, 10)
 shape = SubResource("CapsuleShape2D_hc103")
 
 [node name="Area" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
 position = Vector2(-4, 6)
@@ -465,4 +469,12 @@ limit_top = 0
 limit_bottom = 324
 drag_horizontal_enabled = true
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-5, 10.25)
+shape = SubResource("RectangleShape2D_1cc5w")
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
 [connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

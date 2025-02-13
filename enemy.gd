@@ -13,6 +13,7 @@ var distance
 var can_follow_player = false
 var direction = 1
 
+var is_attacking = false
 
 func _physics_process(delta: float) -> void:
 	
@@ -31,7 +32,8 @@ func _physics_process(delta: float) -> void:
 		if dir_to_player:
 			#velocity.x = lerp(velocity.x, dir_to_player.x * SPEED, AIR_FRICTION)
 			velocity.x = dir_to_player.x * SPEED
-			anim.play("walking")
+			if not is_attacking:
+				anim.play("walking")
 		#else:
 			#velocity.x = move_toward(velocity.x, 0, SPEED)
 
@@ -70,3 +72,13 @@ func check_dir():
 		anim.scale.x *= -1
 		direction *= -1
 		
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		anim.play("attack 1")
+		is_attacking = true
+
+
+func _on_anim_animation_finished() -> void:
+	is_attacking = false
