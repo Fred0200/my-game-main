@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://01ulxfopwr7q"]
+[gd_scene load_steps=74 format=3 uid="uid://01ulxfopwr7q"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_7lh1s"]
 [ext_resource type="Texture2D" uid="uid://rb7sd0etrovp" path="res://assets/FreeKnight_v1/Colour2/Outline/120x80_PNGSheets/_Attack.png" id="2_tdiov"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://jyibddnynp6o" path="res://assets/FreeKnight_v1/Colour2/Outline/120x80_PNGSheets/_Jump.png" id="8_oshjc"]
 [ext_resource type="Texture2D" uid="uid://cjj8ssep0llo6" path="res://assets/FreeKnight_v1/Colour2/Outline/120x80_PNGSheets/_JumpFallInbetween.png" id="9_tv8i3"]
 [ext_resource type="Texture2D" uid="uid://c3c16eapeh5qp" path="res://assets/FreeKnight_v1/Colour2/Outline/120x80_PNGSheets/_Run.png" id="10_umk06"]
+[ext_resource type="FontFile" uid="uid://dwftjw1jf6kax" path="res://assets/RevMiniPixel.ttf" id="11_7aio8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aokkv"]
 atlas = ExtResource("2_tdiov")
@@ -466,7 +467,7 @@ height = 58.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_li6i0"]
 radius = 12.0
-height = 58.0
+height = 60.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nk1po"]
 size = Vector2(31.5, 30)
@@ -476,12 +477,10 @@ texture_filter = 1
 script = ExtResource("1_7lh1s")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
-position = Vector2(-2, -28)
+position = Vector2(6, -31)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ewfmg")
-animation = &"attack_1"
-frame = 3
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_1b7pb")
@@ -499,6 +498,7 @@ offset_left = 508.0
 offset_top = 29.0
 offset_right = 548.0
 offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("11_7aio8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_top = 0

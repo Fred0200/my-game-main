@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var hitbox_collision: CollisionShape2D = $hitbox/collision
 @onready var hitbox: Area2D = $hitbox
 
+@onready var moeda = preload("res://coin.tscn")
 
 const SPEED = 160
 const JUMP_VELOCITY = -280
@@ -70,4 +71,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("collectable"):
 		body.queue_free()
 		points += 1
+		
+	if body.is_in_group("block"):
+		var new_coin = moeda
+		new_coin.instantiate()
+		
+		
+		
 		
