@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://lcx5ioweclj0"]
+[gd_scene load_steps=13 format=4 uid="uid://lcx5ioweclj0"]
 
 [ext_resource type="Texture2D" uid="uid://clqn3fyu4tg2w" path="res://assets/fundo/1.png" id="1_fpl8r"]
 [ext_resource type="Texture2D" uid="uid://b7gmrohl5imw0" path="res://assets/fundo/2.png" id="2_8ojmo"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://caerib4hsce6q" path="res://enemy.tscn" id="6_fqrc0"]
 [ext_resource type="Texture2D" uid="uid://0lxyh3bqfan5" path="res://Tiles/Tiles/Assets/Assets.png" id="7_njvat"]
 [ext_resource type="PackedScene" uid="uid://24erq768mdxj" path="res://coin.tscn" id="8_yk5gw"]
+[ext_resource type="PackedScene" uid="uid://o32n87il2cbw" path="res://prefabs/break_box.tscn" id="9_vidyf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yxlka"]
 texture = ExtResource("7_njvat")
@@ -425,8 +426,6 @@ texture = ExtResource("4_ueosv")
 [node name="player" parent="." instance=ExtResource("5_lup4w")]
 position = Vector2(276, 171)
 
-[node name="plataformas" type="Node" parent="."]
-
 [node name="enemy" parent="." instance=ExtResource("6_fqrc0")]
 position = Vector2(554, 155)
 scale = Vector2(0.6, 0.6)
@@ -455,3 +454,6 @@ position = Vector2(1072, 224)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_kl3wo")
+
+[node name="break-box" parent="." instance=ExtResource("9_vidyf")]
+position = Vector2(394, 209)

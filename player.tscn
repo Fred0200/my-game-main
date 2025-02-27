@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://01ulxfopwr7q"]
+[gd_scene load_steps=75 format=3 uid="uid://01ulxfopwr7q"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_7lh1s"]
 [ext_resource type="Texture2D" uid="uid://rb7sd0etrovp" path="res://assets/FreeKnight_v1/Colour2/Outline/120x80_PNGSheets/_Attack.png" id="2_tdiov"]
@@ -472,6 +472,9 @@ height = 60.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nk1po"]
 size = Vector2(31.5, 30)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ralgc"]
+size = Vector2(20, 4)
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
 texture_filter = 1
 script = ExtResource("1_7lh1s")
@@ -513,4 +516,12 @@ position = Vector2(35, 6)
 shape = SubResource("RectangleShape2D_nk1po")
 disabled = true
 
+[node name="head_collider" type="Area2D" parent="."]
+
+[node name="head_collision" type="CollisionShape2D" parent="head_collider"]
+position = Vector2(0, -30)
+shape = SubResource("RectangleShape2D_ralgc")
+debug_color = Color(0, 0.640845, 0.343655, 0.42)
+
 [connection signal="body_entered" from="Area coin" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="head_collider" to="." method="_on_head_collider_body_entered"]

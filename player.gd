@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var hitbox: Area2D = $hitbox
 
 @onready var moeda = preload("res://coin.tscn")
+@onready var destroy_sfx = preload("res://sounds/destroy_sfx.tscn")
 
 const SPEED = 160
 const JUMP_VELOCITY = -280
@@ -76,6 +77,24 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var new_coin = moeda
 		new_coin.instantiate()
 		
-		
-		
+
+# Breaking box - normal box hit and box destruction
+func _on_head_collider_body_entered(body):
+	if body.has_method("break_sprite"):
+		body.hitpoints -= 1
+		if body.hitpoints < 0:
+			body.break_sprite()
+			play_destroy_sfx()
+		else:
+			body.animation_player.play("hit")
+			body.hit_block_sfx.play()
+			body.create_coin()	
+
+# Break box sound
+func play_destroy_sfx():
+	var sound_sfx = destroy_sfx.instantiate()
+	get_parent().add_child(sound_sfx)
+	sound_sfx.play()
+	await sound_sfx.finished
+	sound_sfx.queue_free()	
 		
