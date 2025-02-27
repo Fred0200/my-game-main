@@ -380,7 +380,8 @@ texture = ExtResource("7_njvat")
 5:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_3drfn"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 15
 sources/0 = SubResource("TileSetAtlasSource_yxlka")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kl3wo"]
@@ -427,7 +428,7 @@ texture = ExtResource("4_ueosv")
 position = Vector2(276, 171)
 
 [node name="enemy" parent="." instance=ExtResource("6_fqrc0")]
-position = Vector2(554, 155)
+position = Vector2(1184, 163)
 scale = Vector2(0.6, 0.6)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -455,5 +456,388 @@ position = Vector2(1072, 224)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_kl3wo")
 
-[node name="break-box" parent="." instance=ExtResource("9_vidyf")]
-position = Vector2(394, 209)
+[node name="bank" type="Node" parent="."]
+
+[node name="break-box" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(414, 216)
+
+[node name="break-box2" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(447, 217)
+
+[node name="break-box3" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(513, 217)
+
+[node name="break-box4" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(479, 217)
+
+[node name="break-box5" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(542, 218)
+
+[node name="break-box6" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(576, 218)
+
+[node name="break-box7" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(385, 218)
+
+[node name="break-box8" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(350, 216)
+
+[node name="break-box9" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(668, 219)
+
+[node name="break-box10" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(701, 220)
+
+[node name="break-box11" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(767, 220)
+
+[node name="break-box12" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(733, 220)
+
+[node name="break-box13" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(796, 221)
+
+[node name="break-box14" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(830, 221)
+
+[node name="break-box15" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(639, 221)
+
+[node name="break-box16" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(604, 219)
+
+[node name="break-box17" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(431, 217)
+
+[node name="break-box18" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(464, 218)
+
+[node name="break-box19" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(530, 218)
+
+[node name="break-box20" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(496, 218)
+
+[node name="break-box21" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(559, 219)
+
+[node name="break-box22" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(593, 219)
+
+[node name="break-box23" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(402, 219)
+
+[node name="break-box24" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(367, 217)
+
+[node name="break-box25" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(685, 218)
+
+[node name="break-box26" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(718, 219)
+
+[node name="break-box27" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(784, 219)
+
+[node name="break-box28" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(750, 219)
+
+[node name="break-box29" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(813, 220)
+
+[node name="break-box30" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(847, 220)
+
+[node name="break-box31" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(656, 220)
+
+[node name="break-box32" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(621, 218)
+
+[node name="break-box33" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(407, 218)
+
+[node name="break-box34" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(440, 219)
+
+[node name="break-box35" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(506, 219)
+
+[node name="break-box36" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(472, 219)
+
+[node name="break-box37" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(535, 220)
+
+[node name="break-box38" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(569, 220)
+
+[node name="break-box39" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(378, 220)
+
+[node name="break-box40" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(343, 218)
+
+[node name="break-box41" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(661, 221)
+
+[node name="break-box42" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(694, 222)
+
+[node name="break-box43" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(760, 222)
+
+[node name="break-box44" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(726, 222)
+
+[node name="break-box45" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(789, 223)
+
+[node name="break-box46" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(823, 223)
+
+[node name="break-box47" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(632, 223)
+
+[node name="break-box48" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(597, 221)
+
+[node name="break-box49" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(424, 219)
+
+[node name="break-box50" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(457, 220)
+
+[node name="break-box51" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(523, 220)
+
+[node name="break-box52" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(489, 220)
+
+[node name="break-box53" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(552, 221)
+
+[node name="break-box54" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(586, 221)
+
+[node name="break-box55" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(395, 221)
+
+[node name="break-box56" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(360, 219)
+
+[node name="break-box57" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(678, 220)
+
+[node name="break-box58" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(711, 221)
+
+[node name="break-box59" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(777, 221)
+
+[node name="break-box60" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(743, 221)
+
+[node name="break-box61" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(806, 222)
+
+[node name="break-box62" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(840, 222)
+
+[node name="break-box63" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(649, 222)
+
+[node name="break-box64" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(614, 220)
+
+[node name="break-box65" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(380, 219)
+
+[node name="break-box66" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(413, 220)
+
+[node name="break-box67" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(479, 220)
+
+[node name="break-box68" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(445, 220)
+
+[node name="break-box69" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(508, 221)
+
+[node name="break-box70" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(542, 221)
+
+[node name="break-box71" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(351, 221)
+
+[node name="break-box72" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(316, 219)
+
+[node name="break-box73" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(634, 222)
+
+[node name="break-box74" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(667, 223)
+
+[node name="break-box75" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(733, 223)
+
+[node name="break-box76" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(699, 223)
+
+[node name="break-box77" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(762, 224)
+
+[node name="break-box78" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(796, 224)
+
+[node name="break-box79" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(605, 224)
+
+[node name="break-box80" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(570, 222)
+
+[node name="break-box81" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(397, 220)
+
+[node name="break-box82" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(430, 221)
+
+[node name="break-box83" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(496, 221)
+
+[node name="break-box84" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(462, 221)
+
+[node name="break-box85" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(525, 222)
+
+[node name="break-box86" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(559, 222)
+
+[node name="break-box87" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(368, 222)
+
+[node name="break-box88" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(333, 220)
+
+[node name="break-box89" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(651, 221)
+
+[node name="break-box90" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(684, 222)
+
+[node name="break-box91" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(750, 222)
+
+[node name="break-box92" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(716, 222)
+
+[node name="break-box93" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(779, 223)
+
+[node name="break-box94" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(813, 223)
+
+[node name="break-box95" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(622, 223)
+
+[node name="break-box96" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(587, 221)
+
+[node name="break-box97" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(373, 221)
+
+[node name="break-box98" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(406, 222)
+
+[node name="break-box99" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(472, 222)
+
+[node name="break-box100" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(438, 222)
+
+[node name="break-box101" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(501, 223)
+
+[node name="break-box102" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(535, 223)
+
+[node name="break-box103" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(344, 223)
+
+[node name="break-box104" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(309, 221)
+
+[node name="break-box105" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(627, 224)
+
+[node name="break-box106" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(660, 225)
+
+[node name="break-box107" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(726, 225)
+
+[node name="break-box108" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(692, 225)
+
+[node name="break-box109" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(755, 226)
+
+[node name="break-box110" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(789, 226)
+
+[node name="break-box111" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(598, 226)
+
+[node name="break-box112" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(563, 224)
+
+[node name="break-box113" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(390, 222)
+
+[node name="break-box114" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(423, 223)
+
+[node name="break-box115" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(489, 223)
+
+[node name="break-box116" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(455, 223)
+
+[node name="break-box117" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(518, 224)
+
+[node name="break-box118" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(552, 224)
+
+[node name="break-box119" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(361, 224)
+
+[node name="break-box120" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(326, 222)
+
+[node name="break-box121" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(644, 223)
+
+[node name="break-box122" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(677, 224)
+
+[node name="break-box123" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(743, 224)
+
+[node name="break-box124" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(709, 224)
+
+[node name="break-box125" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(772, 225)
+
+[node name="break-box126" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(806, 225)
+
+[node name="break-box127" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(615, 225)
+
+[node name="break-box128" parent="bank" instance=ExtResource("9_vidyf")]
+position = Vector2(580, 223)
