@@ -1,0 +1,139 @@
+[gd_scene load_steps=9 format=3 uid="uid://ckcujqhqas11k"]
+
+[ext_resource type="Script" path="res://scripts/hud_manager.gd" id="1_gu8kv"]
+[ext_resource type="Texture2D" uid="uid://dgfvrh8yg3sch" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/00_Coin-Sprites.png" id="2_lsvyy"]
+[ext_resource type="Texture2D" uid="uid://byt5ar30rr4lk" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/01_Coin-Sprites.png" id="3_h1glr"]
+[ext_resource type="Texture2D" uid="uid://dn4vcy65s8hmt" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/02_Coin-Sprites.png" id="4_2eaws"]
+[ext_resource type="Texture2D" uid="uid://bstuh08nhmt8u" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/03_Coin-Sprites.png" id="5_7tojv"]
+[ext_resource type="FontFile" uid="uid://dwftjw1jf6kax" path="res://assets/RevMiniPixel.ttf" id="6_y7lvi"]
+[ext_resource type="Texture2D" uid="uid://cq13qhbqx4vb7" path="res://assets/Life-Counter-Icon.png" id="7_u6epi"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_cm81o"]
+frames = 4
+speed_scale = 3.0
+frame_0/texture = ExtResource("2_lsvyy")
+frame_1/texture = ExtResource("3_h1glr")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_2eaws")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("5_7tojv")
+frame_3/duration = 1.0
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gu8kv")
+
+[node name="clock_timer" type="Timer" parent="control"]
+autostart = true
+
+[node name="container" type="MarginContainer" parent="control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="coins_container" type="HBoxContainer" parent="control/container"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="coins_icon" type="TextureRect" parent="control/container/coins_container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = SubResource("AnimatedTexture_cm81o")
+expand_mode = 2
+
+[node name="coins_counter" type="Label" parent="control/container/coins_container"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("6_y7lvi")
+theme_override_font_sizes/font_size = 24
+text = "0000"
+vertical_alignment = 1
+
+[node name="timer_container" type="HBoxContainer" parent="control/container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="timer_label" type="Label" parent="control/container/timer_container"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("6_y7lvi")
+text = "TIME:"
+vertical_alignment = 1
+
+[node name="timer_counter" type="Label" parent="control/container/timer_container"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("6_y7lvi")
+text = "00:00"
+vertical_alignment = 1
+
+[node name="score_container" type="HBoxContainer" parent="control/container"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="score_label" type="Label" parent="control/container/score_container"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("6_y7lvi")
+text = "SCORE:"
+vertical_alignment = 1
+
+[node name="score_counter" type="Label" parent="control/container/score_container"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("6_y7lvi")
+text = "000000"
+vertical_alignment = 1
+
+[node name="life_container" type="HBoxContainer" parent="control/container"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="life_icon" type="TextureRect" parent="control/container/life_container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("7_u6epi")
+expand_mode = 2
+
+[node name="life_separator" type="Label" parent="control/container/life_container"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("6_y7lvi")
+theme_override_font_sizes/font_size = 24
+text = "X"
+vertical_alignment = 1
+
+[node name="life_counter" type="Label" parent="control/container/life_container"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("6_y7lvi")
+theme_override_font_sizes/font_size = 24
+text = "03"
+vertical_alignment = 1
+
+[connection signal="timeout" from="control/clock_timer" to="control" method="_on_clock_timer_timeout"]
