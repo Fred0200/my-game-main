@@ -6,7 +6,7 @@ var coins := 1
 
 
 func _on_body_entered(body):
-	if body.is_in_group("player"):	
+	if body.is_in_group("player"):
 		$anim.play("collect")
 		coin_sfx.play()
 		# evita a colisao dupla de moedas, fa

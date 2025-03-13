@@ -518,6 +518,7 @@ shape = SubResource("RectangleShape2D_nk1po")
 disabled = true
 
 [node name="head_collider" type="Area2D" parent="."]
+collision_mask = 12
 
 [node name="head_collision" type="CollisionShape2D" parent="head_collider"]
 position = Vector2(0, -30)
