@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const box_pieces = preload("res://prefabs/box_pieces.tscn")
-const coin_instance = preload("res://prefabs/coin_rigid.tscn")
+const coin_instance = preload("res://prefabs/rigid_body_coin.tscn")
 
 @onready var animation_player := $anim as AnimationPlayer
 @onready var spawn_coin := $spawn_coin as Marker2D

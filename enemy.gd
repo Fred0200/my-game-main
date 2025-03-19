@@ -17,15 +17,14 @@ var is_attacking = false
 
 func _physics_process(delta: float) -> void:
 	
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 	
 	if can_follow_player == true:
 		#player_position = player.global_position
 		#target_position = (player_position - global_position).normalized()
 		#distance = global_position.distance_to(player.global_position) 
-	
-		# Add the gravity.
-		if not is_on_floor():
-			velocity += get_gravity() * delta
 		
 		var dir_to_player = sign(global_position.direction_to(player.global_position))
 		
@@ -37,48 +36,27 @@ func _physics_process(delta: float) -> void:
 		#else:
 			#velocity.x = move_toward(velocity.x, 0, SPEED)
 
-
 		check_dir()
-
 		move_and_slide()
 
-	
 
-
-func _on_area_body_entered(body: Node2D) -> void:
+func _on_follow_player_detector_body_entered(body: Node2D) -> void:
 	can_follow_player = true 
 	
-
-
-
 
 # para mais tarde
 func check_dir():
 	var dir_to_player = sign(global_position.direction_to(player.global_position))
 	
-	
-	#if dir_to_player.x > 0:y
-		#anim.scale.x *= -1
-	
-	#if dir_to_player.x > 0 and direction < 0:
-		#direction = 1
-		#anim.scale.x *= -1 
-	#elif dir_to_player.x < 0 and direction > 0:
-		#direction = -1
-		#anim.scale.x *= -1
-	#
-	#
 	if (dir_to_player.x > 0 and direction < 0) or (dir_to_player.x < 0 and direction > 0):
 		anim.scale.x *= -1
 		direction *= -1
-		
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_detect_player_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		anim.play("attack 1")
 		is_attacking = true
-
-
+		
 func _on_anim_animation_finished() -> void:
 	is_attacking = false
