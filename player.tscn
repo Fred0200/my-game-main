@@ -470,7 +470,7 @@ radius = 12.0
 height = 60.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nk1po"]
-size = Vector2(31.5, 30)
+size = Vector2(39.75, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ralgc"]
 size = Vector2(20, 4)
@@ -494,26 +494,10 @@ shape = SubResource("CapsuleShape2D_1b7pb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area coin"]
 shape = SubResource("CapsuleShape2D_li6i0")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-unique_name_in_owner = true
-offset_left = 508.0
-offset_top = 29.0
-offset_right = 548.0
-offset_bottom = 52.0
-theme_override_fonts/font = ExtResource("11_7aio8")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_top = 0
-limit_bottom = 324
-drag_horizontal_enabled = true
-drag_left_margin = 0.5
-
 [node name="hitbox" type="Area2D" parent="."]
 
 [node name="collision" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(35, 6)
+position = Vector2(30.875, 6)
 shape = SubResource("RectangleShape2D_nk1po")
 disabled = true
 
@@ -524,6 +508,22 @@ collision_mask = 12
 position = Vector2(0, -30)
 shape = SubResource("RectangleShape2D_ralgc")
 debug_color = Color(0, 0.640845, 0.343655, 0.42)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_top = 0
+limit_bottom = 324
+drag_horizontal_enabled = true
+drag_left_margin = 0.5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 519.0
+offset_top = -103.0
+offset_right = 559.0
+offset_bottom = -80.0
+theme_override_fonts/font = ExtResource("11_7aio8")
 
 [connection signal="body_entered" from="Area coin" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="head_collider" to="." method="_on_head_collider_body_entered"]

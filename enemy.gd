@@ -7,6 +7,7 @@ const SPEED = 50
 const JUMP_VELOCITY = -300.0
 const AIR_FRICTION = 0.5
 
+var health = 100
 var player_position
 var target_position 
 var distance
@@ -15,6 +16,9 @@ var direction = 1
 
 var is_attacking = false
 
+
+	
+	
 func _physics_process(delta: float) -> void:
 	
 	# Add the gravity.
@@ -60,3 +64,17 @@ func _on_detect_player_body_entered(body: Node2D) -> void:
 		
 func _on_anim_animation_finished() -> void:
 	is_attacking = false
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	
+	if area.name == "hitbox":
+	
+	
+		health = health -50
+		if health != 0:
+			anim.play("hurt")
+		else:
+			anim.play("death")
+			queue_free()
+		
