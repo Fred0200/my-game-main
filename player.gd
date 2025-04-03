@@ -12,6 +12,8 @@ const JUMP_VELOCITY = -280
 
 var is_attacking = false
 var points = 00000
+var player_health = 100
+var toma_pau = 100   # damage
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -98,3 +100,15 @@ func play_destroy_sfx():
 	await sound_sfx.finished
 	sound_sfx.queue_free()	
 		
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.collision_layer == 5:
+		print("saporra funcionou")
+		anim.play("hurt")
+		player_health = player_health - toma_pau
+		
+		if player_health <= 0:
+			anim.play("death")
+			await anim.animation_finished
+			queue_free()

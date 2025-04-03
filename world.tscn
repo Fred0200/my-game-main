@@ -22,6 +22,7 @@ texture = ExtResource("7_njvat")
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:0/0 = 0
 4:0/0/modulate = Color(0.396078, 0.721569, 0.356863, 1)
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(6.625, -8, 6.875, 1.25, 5.625, 3.375, 6.375, 8, -8, 8, -8, -8)
 7:0/0 = 0
 7:0/0/modulate = Color(0.394981, 0.720821, 0.358595, 1)
 7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 2.625, 8, -0.125, 8, 8, -8, 8)

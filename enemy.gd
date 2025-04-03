@@ -76,5 +76,6 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 			anim.play("hurt")
 		else:
 			anim.play("death")
+			await anim.animation_finished
 			queue_free()
 		
