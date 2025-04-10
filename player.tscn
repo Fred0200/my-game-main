@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://01ulxfopwr7q"]
+[gd_scene load_steps=75 format=3 uid="uid://01ulxfopwr7q"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_7lh1s"]
 [ext_resource type="Texture2D" uid="uid://rb7sd0etrovp" path="res://assets/FreeKnight_v1/Colour2/Outline/120x80_PNGSheets/_Attack.png" id="2_tdiov"]
@@ -461,50 +461,39 @@ animations = [{
 "speed": 13.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1b7pb"]
-radius = 11.0
-height = 58.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_li6i0"]
-radius = 12.0
+radius = 7.0
 height = 60.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nk1po"]
-size = Vector2(39.75, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ralgc"]
 size = Vector2(20, 4)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nk1po"]
+size = Vector2(49.75, 30)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ch3ep"]
-size = Vector2(20, 34)
+size = Vector2(19, 34)
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 texture_filter = 1
 collision_mask = 14
 script = ExtResource("1_7lh1s")
 
+[node name="collision" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-11, -17, -16, 4, -20, 29, 3, 29, 5, 26, 4, 0, 0, -16, -2, -25, -9, -25)
+
 [node name="anim" type="AnimatedSprite2D" parent="."]
-position = Vector2(6, -31)
+position = Vector2(0, -31)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ewfmg")
 animation = &"idle"
 frame = 1
 frame_progress = 0.0981245
 
-[node name="collision" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_1b7pb")
-
 [node name="Area coin" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area coin"]
 shape = SubResource("CapsuleShape2D_li6i0")
-
-[node name="hitbox" type="Area2D" parent="."]
-
-[node name="collision" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(30.875, 6)
-shape = SubResource("RectangleShape2D_nk1po")
-disabled = true
 
 [node name="head_collider" type="Area2D" parent="."]
 collision_mask = 12
@@ -513,6 +502,22 @@ collision_mask = 12
 position = Vector2(0, -30)
 shape = SubResource("RectangleShape2D_ralgc")
 debug_color = Color(0, 0.640845, 0.343655, 0.42)
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="collision" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(25.875, 6)
+shape = SubResource("RectangleShape2D_nk1po")
+disabled = true
+
+[node name="hurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 32
+
+[node name="collision" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(-2.5, 2)
+shape = SubResource("RectangleShape2D_ch3ep")
+debug_color = Color(0.979888, 0, 0.3843, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_top = 0
@@ -529,15 +534,6 @@ offset_top = -103.0
 offset_right = 559.0
 offset_bottom = -80.0
 theme_override_fonts/font = ExtResource("11_7aio8")
-
-[node name="hurtbox" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 32
-
-[node name="collision" type="CollisionShape2D" parent="hurtbox"]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_ch3ep")
-debug_color = Color(0.979888, 0, 0.3843, 0.42)
 
 [connection signal="body_entered" from="Area coin" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="head_collider" to="." method="_on_head_collider_body_entered"]

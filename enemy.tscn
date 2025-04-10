@@ -440,20 +440,8 @@ size = Vector2(134, 90.5)
 radius = 15.0
 height = 92.0
 
-[sub_resource type="Animation" id="Animation_peopb"]
-resource_name = "toma_pau"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("hitbox:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(32, -8), Vector2(56, -3)]
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eiljf"]
+size = Vector2(5.817, 41.4832)
 
 [sub_resource type="Animation" id="Animation_wplrx"]
 length = 0.001
@@ -469,15 +457,100 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(32, -8)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("anim:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack 1"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("anim:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("hitbox:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.984366]
+}
+
+[sub_resource type="Animation" id="Animation_peopb"]
+resource_name = "toma_pau"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hitbox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.633333, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(32, -8), Vector2(-2, -16), Vector2(-40, -22), Vector2(-40, -11), Vector2(-43, -9), Vector2(68, -16), Vector2(69, -21), Vector2(63, -15), Vector2(60, -15), Vector2(62, -16), Vector2(41, -9), Vector2(32, -8), Vector2(31, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("anim:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack 1"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("anim:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("hitbox:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.633333, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [3.55873, 2.64941, 2.11883, 1.74009, 1.93033, 1.3631, 1.37706, 1.34914, 1.39975, 1.37532, 0.932006, 0.394444, 0.453786]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5m7ia"]
 _data = {
 "RESET": SubResource("Animation_wplrx"),
 "toma_pau": SubResource("Animation_peopb")
 }
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eiljf"]
-size = Vector2(5.817, 41.4832)
 
 [node name="enemy" type="CharacterBody2D"]
 collision_layer = 4
@@ -490,22 +563,18 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_bnbhy")
 animation = &"attack 1"
 autoplay = "idle"
-frame = 9
-frame_progress = 1.0
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(-5, 10)
 shape = SubResource("CapsuleShape2D_hc103")
 
 [node name="follow_player_detector" type="Area2D" parent="."]
-visible = false
 
 [node name="collision" type="CollisionShape2D" parent="follow_player_detector"]
 position = Vector2(-4, 6)
 shape = SubResource("CircleShape2D_ie3gs")
 
 [node name="detect_player" type="Area2D" parent="."]
-visible = false
 
 [node name="collision" type="CollisionShape2D" parent="detect_player"]
 position = Vector2(-5, 10.25)
@@ -517,20 +586,19 @@ shape = SubResource("RectangleShape2D_1cc5w")
 position = Vector2(-5, 10)
 shape = SubResource("CapsuleShape2D_p0igu")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_5m7ia")
-}
-
 [node name="hitbox" type="Area2D" parent="."]
 position = Vector2(32, -8)
+rotation = 0.984366
 collision_layer = 32
 collision_mask = 16
 
 [node name="collision" type="CollisionShape2D" parent="hitbox"]
-rotation = 0.471239
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_eiljf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5m7ia")
+}
 
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
 [connection signal="body_entered" from="follow_player_detector" to="." method="_on_follow_player_detector_body_entered"]

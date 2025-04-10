@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var anim: AnimatedSprite2D = $anim
 @onready var hitbox_collision: CollisionShape2D = $hitbox/collision
 @onready var hitbox: Area2D = $hitbox
-
+@onready var collision: CollisionPolygon2D = $collision
 @onready var moeda = preload("res://coin.tscn")
 @onready var destroy_sfx = preload("res://sounds/destroy_sfx.tscn")
 
@@ -23,11 +23,11 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		anim.play('jump')
 
 
 	# Attack
 	if Input.is_action_just_pressed("attack") and not is_attacking:
-		
 		is_attacking = true
 		hitbox_collision.set_deferred('disabled', false)
 		
@@ -37,38 +37,36 @@ func _physics_process(delta: float) -> void:
 		
 		is_attacking = false
 		hitbox_collision.set_deferred('disabled', true)
-		
-		
-		
-
-	
 	
 	elif not is_attacking:
 		# Get the input direction and handle the movement/deceleration.
-		# As good practice, you should replace UI actions with custom gameplay actions.
 		var direction := Input.get_axis("ui_left", "ui_right")
+		velocity.x = direction * SPEED
 		if direction > 0:
-			velocity.x = direction * SPEED
-			anim.flip_h = false
+			collision.scale.x = direction
 			hitbox.scale.x = direction 
+			anim.flip_h = false
 			anim.play('walking')
 		elif direction < 0:
-			velocity.x = direction * SPEED
+			collision.scale.x = direction
+			hitbox.scale.x = direction
 			anim.flip_h = true
 			anim.play('walking')
-			hitbox.scale.x = direction
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			anim.play('idle')
-		
 
-	if not is_on_floor():
-		anim.play('jump')
-	
 	move_and_slide()
 
-	%Label.set_text("0000{my_points}".format({'my_points': points}))
-	move_and_slide()
+
+
+# função take damage para vc fazer
+# aqui esta uma ajudinha: 
+#var knockback_vector := Vector2.ZERO
+#if knockback_vector != Vector2.ZERO:
+		#velocity = knockback_vector
+
+
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("collectable"):
