@@ -20,14 +20,16 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
+
+	# FIXME: saporra n esta saltando, 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		anim.play('jump')
-
-
+		
+		
 	# Attack
-	if Input.is_action_just_pressed("attack") and not is_attacking:
+	elif Input.is_action_just_pressed("attack") and not is_attacking:
 		is_attacking = true
 		hitbox_collision.set_deferred('disabled', false)
 		
@@ -44,7 +46,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 		if direction > 0:
 			collision.scale.x = direction
-			hitbox.scale.x = direction 
+			hitbox.scale.x = direction
 			anim.flip_h = false
 			anim.play('walking')
 		elif direction < 0:
@@ -57,14 +59,19 @@ func _physics_process(delta: float) -> void:
 			anim.play('idle')
 
 	move_and_slide()
+	
+
+
+
 
 
 
 # função take damage para vc fazer
-# aqui esta uma ajudinha: 
-#var knockback_vector := Vector2.ZERO
-#if knockback_vector != Vector2.ZERO:
-		#velocity = knockback_vector
+func take_damage():
+	var knockback_vector := Vector2.ZERO
+	knockback_vector = Vector2(-100, -100)
+	if knockback_vector != Vector2.ZERO:
+			velocity = knockback_vector 
 
 
 
@@ -88,7 +95,7 @@ func _on_head_collider_body_entered(body):
 		else:
 			body.animation_player.play("hit")
 			body.hit_block_sfx.play()
-			body.create_coin()	
+			body.create_coin()
 
 # Break box sound
 func play_destroy_sfx():
@@ -96,7 +103,7 @@ func play_destroy_sfx():
 	get_parent().add_child(sound_sfx)
 	sound_sfx.play()
 	await sound_sfx.finished
-	sound_sfx.queue_free()	
+	sound_sfx.queue_free()
 		
 
 
@@ -105,8 +112,15 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		print("saporra funcionou")
 		anim.play("hurt")
 		player_health = player_health - toma_pau
+		take_damage()
 		
 		if player_health <= 0:
 			anim.play("death")
 			await anim.animation_finished
 			queue_free()
+
+
+
+#eu não quero trabalhar hoje 
+#I don´t want to work today
+#je ne querer pas trabalhar hoje
