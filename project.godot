@@ -13,13 +13,18 @@ config_version=5
 config/name="my game"
 run/main_scene="res://title_screen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/logo.png"
 
 [display]
 
 window/size/viewport_width=576
 window/size/viewport_height=324
+window/size/always_on_top=true
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_tours/plugin.cfg")
 
 [global_group]
 
@@ -68,4 +73,6 @@ attack={
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
+textures/canvas_textures/default_texture_filter="Nearest"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

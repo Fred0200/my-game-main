@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TourList" load_steps=4 format=3 uid="uid://c2s3yi41l51dc"]
+
+[ext_resource type="Script" path="res://addons/godot_tours/godot_tour_list.gd" id="1_xu5ql"]
+[ext_resource type="Resource" uid="uid://bnjn82gcuowep" path="res://tours/entries/00_intro_to_godot.tres" id="2_b8rgi"]
+[ext_resource type="Resource" uid="uid://bhmkr08evau0y" path="res://tours/entries/05_shoot_bulelts.tres" id="3_6f3oi"]
+
+[resource]
+script = ExtResource("1_xu5ql")
+tours = [ExtResource("2_b8rgi"), ExtResource("3_6f3oi")]
