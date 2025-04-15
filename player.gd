@@ -21,7 +21,6 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 
-	# FIXME: saporra n esta saltando, 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -44,19 +43,25 @@ func _physics_process(delta: float) -> void:
 		# Get the input direction and handle the movement/deceleration.
 		var direction := Input.get_axis("ui_left", "ui_right")
 		velocity.x = direction * SPEED
-		if direction > 0:
-			collision.scale.x = direction
-			hitbox.scale.x = direction
-			anim.flip_h = false
-			anim.play('walking')
-		elif direction < 0:
-			collision.scale.x = direction
-			hitbox.scale.x = direction
-			anim.flip_h = true
-			anim.play('walking')
+		
+		if not is_on_floor():
+			# Keep jump animation playing while in air
+			if anim.animation != 'jump':
+				anim.play('jump')
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			anim.play('idle')
+			if direction > 0:
+				collision.scale.x = direction
+				hitbox.scale.x = direction
+				anim.flip_h = false
+				anim.play('walking')
+			elif direction < 0:
+				collision.scale.x = direction
+				hitbox.scale.x = direction
+				anim.flip_h = true
+				anim.play('walking')
+			else:
+				velocity.x = move_toward(velocity.x, 0, SPEED)
+				anim.play('idle')
 
 	move_and_slide()
 	
@@ -118,9 +123,4 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 			anim.play("death")
 			await anim.animation_finished
 			queue_free()
-
-
-
-#eu não quero trabalhar hoje 
-#I don´t want to work today
-#je ne querer pas trabalhar hoje
+ 
