@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://01ulxfopwr7q"]
+[gd_scene load_steps=81 format=3 uid="uid://01ulxfopwr7q"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_7lh1s"]
 [ext_resource type="Texture2D" uid="uid://rb7sd0etrovp" path="res://assets/FreeKnight_v1/Colour2/Outline/120x80_PNGSheets/_Attack.png" id="2_tdiov"]
@@ -11,7 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://cjj8ssep0llo6" path="res://assets/FreeKnight_v1/Colour2/Outline/120x80_PNGSheets/_JumpFallInbetween.png" id="9_tv8i3"]
 [ext_resource type="Texture2D" uid="uid://c3c16eapeh5qp" path="res://assets/FreeKnight_v1/Colour2/Outline/120x80_PNGSheets/_Run.png" id="10_umk06"]
 [ext_resource type="FontFile" uid="uid://dwftjw1jf6kax" path="res://assets/RevMiniPixel.ttf" id="11_7aio8"]
-[ext_resource type="Script" path="res://scripts/player/fsm.gd" id="12_4wdyc"]
+[ext_resource type="Script" path="res://scripts/player/camera.gd" id="11_0024q"]
+[ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="12_6bnen"]
 [ext_resource type="Script" path="res://scripts/player/idle.gd" id="13_cwl3t"]
 [ext_resource type="Script" path="res://scripts/player/run.gd" id="14_e5nfy"]
 [ext_resource type="Script" path="res://scripts/player/attack.gd" id="15_o0cng"]
@@ -462,7 +463,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_2qycx")
 }],
 "loop": true,
-"name": &"walking",
+"name": &"run",
 "speed": 13.0
 }]
 
@@ -491,7 +492,7 @@ polygon = PackedVector2Array(-11, -17, -16, 4, -20, 29, 3, 29, 5, 26, 4, 0, 0, -
 position = Vector2(0, -31)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ewfmg")
-animation = &"death"
+animation = &"run"
 
 [node name="Area coin" type="Area2D" parent="."]
 
@@ -522,11 +523,12 @@ position = Vector2(-2.5, 2)
 shape = SubResource("RectangleShape2D_ch3ep")
 debug_color = Color(0.979888, 0, 0.3843, 0.42)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="camera" type="Camera2D" parent="."]
 limit_top = 0
 limit_bottom = 324
 drag_horizontal_enabled = true
 drag_left_margin = 0.5
+script = ExtResource("11_0024q")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -538,20 +540,31 @@ offset_right = 559.0
 offset_bottom = -80.0
 theme_override_fonts/font = ExtResource("11_7aio8")
 
-[node name="fsm" type="Node" parent="."]
-script = ExtResource("12_4wdyc")
+[node name="Label" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -64.0
+offset_right = 20.0
+offset_bottom = -41.0
 
-[node name="idle" type="Node" parent="fsm"]
+[node name="fsm" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("12_6bnen")
+initial_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="fsm" node_paths=PackedStringArray("player")]
 script = ExtResource("13_cwl3t")
+player = NodePath("../..")
 
-[node name="run" type="Node" parent="fsm"]
+[node name="run" type="Node" parent="fsm" node_paths=PackedStringArray("player")]
 script = ExtResource("14_e5nfy")
+player = NodePath("../..")
 
-[node name="attack" type="Node" parent="fsm"]
-script = ExtResource("15_o0cng")
-
-[node name="jump" type="Node" parent="fsm"]
+[node name="jump" type="Node" parent="fsm" node_paths=PackedStringArray("player")]
 script = ExtResource("16_yb2x0")
+player = NodePath("../..")
+
+[node name="attack" type="Node" parent="fsm" node_paths=PackedStringArray("player")]
+script = ExtResource("15_o0cng")
+player = NodePath("../..")
 
 [connection signal="body_entered" from="Area coin" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="head_collider" to="." method="_on_head_collider_body_entered"]

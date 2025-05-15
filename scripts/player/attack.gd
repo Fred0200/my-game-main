@@ -1,15 +1,25 @@
 extends State
 
+@export var player : CharacterBody2D
 @onready var anim: AnimatedSprite2D = $"../../anim"
+@onready var hitbox = $"../../hitbox/collision"
 
 func Enter():
-	anim.play('attack')
+	hitbox.set_deferred('disabled', false)
+	player.velocity.x = 0  # Stop horizontal movement
+	anim.play('attack_1')
 
 func Exit():
-	pass
+	hitbox.set_deferred('disabled', true)
 
 func Update(_delta:float):
-	if Input.:
-		state_transition.emit('run')
-	elif Input.action_press("ui_accept"):
-		state_transition.emit('jump')
+	await anim.animation_finished
+	if Input.get_axis('ui_left', 'ui_right') != 0:
+		Transitioned.emit(self, 'run')
+	else:
+		Transitioned.emit(self, 'idle')
+
+func Physics_Update(_delta):
+	pass
+	
+	

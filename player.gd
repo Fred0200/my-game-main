@@ -6,9 +6,12 @@ extends CharacterBody2D
 @onready var collision: CollisionPolygon2D = $collision
 @onready var moeda = preload("res://coin.tscn")
 @onready var destroy_sfx = preload("res://sounds/destroy_sfx.tscn")
+@onready var fsm: Node = $fsm
+@onready var camera: Camera2D = $camera
 
 const SPEED = 160
 const JUMP_VELOCITY = -280
+const AIR_FRICTION := 0.95
 
 var is_attacking = false
 var points = 00000
@@ -20,63 +23,83 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		anim.play('jump')
-		
-		
-	# Attack
-	elif Input.is_action_just_pressed("attack") and not is_attacking:
-		is_attacking = true
-		hitbox_collision.set_deferred('disabled', false)
-		
-		velocity.x = 0  # Stop horizontal movement
-		anim.play('attack_1')
-		await anim.animation_finished
-		
-		is_attacking = false
-		hitbox_collision.set_deferred('disabled', true)
-	
-	elif not is_attacking:
-		# Get the input direction and handle the movement/deceleration.
-		var direction := Input.get_axis("ui_left", "ui_right")
-		velocity.x = direction * SPEED
-		
-		if not is_on_floor():
-			# Keep jump animation playing while in air
-			if anim.animation != 'jump':
-				anim.play('jump')
-		else:
-			if direction > 0:
-				collision.scale.x = direction
-				hitbox.scale.x = direction
-				anim.flip_h = false
-				anim.play('walking')
-			elif direction < 0:
-				collision.scale.x = direction
-				hitbox.scale.x = direction
-				anim.flip_h = true
-				anim.play('walking')
-			else:
-				velocity.x = move_toward(velocity.x, 0, SPEED)
-				anim.play('idle')
+#
+	## Handle jump.
+	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		#velocity.y = JUMP_VELOCITY
+		#anim.play('jump')
+		#
+		#
+	## Attack
+	#elif Input.is_action_just_pressed("attack") and not is_attacking:
+		#is_attacking = true
+		#hitbox_collision.set_deferred('disabled', false)
+		#
+		#velocity.x = 0  # Stop horizontal movement
+		#anim.play('attack_1')
+		#await anim.animation_finished
+		#
+		#is_attacking = false
+		#hitbox_collision.set_deferred('disabled', true)
+	#
+	#elif not is_attacking:
+		## Get the input direction and handle the movement/deceleration.
+		#var direction := Input.get_axis("ui_left", "ui_right")
+		#velocity.x = direction * SPEED
+		#
+		#if not is_on_floor():
+			## Keep jump animation playing while in air
+			#if anim.animation != 'jump':
+				#anim.play('jump')
+		#else:
+			#if direction > 0:
+				#collision.scale.x = direction
+				#hitbox.scale.x = direction
+				#anim.flip_h = false
+				#anim.play('walking')
+			#elif direction < 0:
+				#collision.scale.x = direction
+				#hitbox.scale.x = direction
+				#anim.flip_h = true
+				#anim.play('walking')
+			#else:
+				#velocity.x = move_toward(velocity.x, 0, SPEED)
+				#anim.play('idle')
 
 	move_and_slide()
 	
-
-
-
+	
+	
+func move_player():
+	var direction = Input.get_axis('ui_left', 'ui_right')
+	
+	# playstation controller
+	if direction < 0: direction = floor(direction)  
+	else: direction = ceil(direction)
+		
+	if direction:
+		velocity.x = lerp(velocity.x, direction * SPEED, AIR_FRICTION)
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+	if direction != 0:
+		anim.scale.x = direction * 1.5 #(pq o anim foi tem 1.5 de scale )
+		# fsm.scale.x = direction so se recoverter para Node2D (existe o 'change type')
 
 
 
 # função take damage para vc fazer
 func take_damage():
+	camera.apply_shake(30)
+	
 	var knockback_vector := Vector2.ZERO
 	knockback_vector = Vector2(-100, -100)
 	if knockback_vector != Vector2.ZERO:
 			velocity = knockback_vector 
+
+	# para vc descomentar qnd criar o Globals
+	#if Globals.player_health <= 0:
+		#fsm.force_change_state('die')
 
 
 
