@@ -486,7 +486,7 @@ collision_mask = 14
 script = ExtResource("1_7lh1s")
 
 [node name="collision" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-11, -17, -16, 4, -20, 29, 3, 29, 5, 26, 4, 0, 0, -16, -2, -25, -9, -25)
+polygon = PackedVector2Array(-11, -17, -16, 4, -16, 29, 3, 29, 5, 26, 4, 0, 0, -16, -2, -25, -9, -25)
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -31)
@@ -565,6 +565,12 @@ player = NodePath("../..")
 [node name="attack" type="Node" parent="fsm" node_paths=PackedStringArray("player")]
 script = ExtResource("15_o0cng")
 player = NodePath("../..")
+
+[node name="bullet_position" type="Marker2D" parent="."]
+position = Vector2(23, -12)
+
+[node name="shoot_cooldown" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="body_entered" from="Area coin" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="head_collider" to="." method="_on_head_collider_body_entered"]

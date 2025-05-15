@@ -84,6 +84,7 @@ func move_player():
 		
 	if direction != 0:
 		anim.scale.x = direction * 1.5 #(pq o anim foi tem 1.5 de scale )
+		hitbox.scale.x = direction
 		# fsm.scale.x = direction so se recoverter para Node2D (existe o 'change type')
 
 
