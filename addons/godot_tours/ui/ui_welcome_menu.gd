@@ -47,7 +47,7 @@ func _ready() -> void:
 
 func setup(translation_service: TranslationService, tour_list: GodotTourList) -> void:
 	Utils.update_locale(translation_service, {
-		label_title: {text = "Welcome to MadfoxTours!"},
+		#label_title: {text = "Welcome to MadfoxTours!"},
 		button_start_learning: {text = "START LEARNING"},
 		button_reset_no: {text = "NO"},
 		button_reset_yes: {text = "YES"},
@@ -125,7 +125,7 @@ func show_reset_success() -> void:
 ## Called by the plugin after a tour has been reset.
 func show_reset_failure() -> void:
 	label_reset_title.text = tr("Reset failed")
-	label_reset_explanation.text = tr("The tour [b]%s[/] could not be reset. Try closing and reopening Godot or restarting your computer and try resetting again." % get_selectable_tour().title)
+	label_reset_explanation.text = tr("The tour [b]%s[/] could not be reset." % get_selectable_tour().title)
 	label_reset_explanation.text += "\n" + tr("If the problem persists, please check the errors in the Output bottom panel and let us know!")
 	button_reset_no.hide()
 	button_reset_yes.hide()

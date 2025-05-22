@@ -1,10 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhu2wc07q7fxk"]
+[gd_scene load_steps=7 format=3 uid="uid://bhu2wc07q7fxk"]
 
 [ext_resource type="Script" path="res://addons/godot_tours/ui/ui_welcome_menu.gd" id="1_kfmbk"]
 [ext_resource type="Theme" uid="uid://7hcgepakmhxl" path="res://addons/godot_tours/ui/theme_welcome_menu.tres" id="2_0icf0"]
 [ext_resource type="Texture2D" uid="uid://cb4s7cxc5wtdv" path="res://addons/godot_tours/assets/icons/reload.svg" id="3_rgtlm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1q4hb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f8t6o"]
+
+[sub_resource type="Theme" id="Theme_x6v7k"]
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_f8t6o")
 
 [node name="UIWelcomeMenu" type="CanvasLayer"]
 script = ExtResource("1_kfmbk")
@@ -38,10 +43,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -272.0
-offset_top = -219.0
-offset_right = 248.0
-offset_bottom = -7.0
+offset_left = -282.0
+offset_top = -109.5
+offset_right = 282.0
+offset_bottom = 109.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -56,6 +61,7 @@ theme_override_constants/margin_bottom = 40
 [node name="ViewMenu" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/separation = 16
 alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/ViewMenu"]
@@ -113,9 +119,17 @@ rotation = 2.35619
 pivot_offset = Vector2(20, 3)
 mouse_filter = 2
 
-[node name="ToursColumn" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer/ViewMenu"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/PanelContainer/MarginContainer/ViewMenu"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+theme = SubResource("Theme_x6v7k")
+
+[node name="ToursColumn" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer/ViewMenu/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/ViewMenu"]
 layout_mode = 2
@@ -188,12 +202,12 @@ unique_name_in_owner = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_type_variation = &"NextButton"
-theme_override_colors/font_disabled_color = Color(0.415686, 0.0980392, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.415686, 0.0980392, 0, 1)
-theme_override_colors/font_hover_color = Color(0.415686, 0.0980392, 0, 1)
-theme_override_colors/font_pressed_color = Color(0.415686, 0.0980392, 0, 1)
-theme_override_colors/font_focus_color = Color(0.415686, 0.0980392, 0, 1)
-theme_override_colors/font_color = Color(0.415686, 0.0980392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.211765, 0.239216, 0.290196, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.211765, 0.239216, 0.290196, 1)
+theme_override_colors/font_hover_color = Color(0.211765, 0.239216, 0.290196, 1)
+theme_override_colors/font_pressed_color = Color(0.211765, 0.239216, 0.290196, 1)
+theme_override_colors/font_focus_color = Color(0.211765, 0.239216, 0.290196, 1)
+theme_override_colors/font_color = Color(0.211765, 0.239216, 0.290196, 1)
 shortcut_in_tooltip = false
 text = "YES"
 

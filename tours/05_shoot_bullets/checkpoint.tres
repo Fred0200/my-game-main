@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_wh37r")
-checkpoint_func_path = "steps_050_assigning_shoot_input_key"
+checkpoint_func_path = "steps_060_coding_final"

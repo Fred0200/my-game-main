@@ -128,6 +128,15 @@ func load_checkpoint(path: String)->String:
 	var resource: Checkpoint = get_checkpoint_res(path)
 	return resource.checkpoint_func_path 
 
+
+func get_text_from_json(path: String, key: String) -> String:
+	var file = FileAccess.open(path, FileAccess.READ)
+	if file:
+		var data = JSON.parse_string(file.get_as_text()) as Dictionary
+		return data[key] if key in data else ""  # Returns only the exact value
+	return ""
+
+
 # Ruben's workaround to clear error and warnings msgs of the console's output.
 # As a side effect, it also triggers save files
 func clear_output_console()->void:
@@ -445,9 +454,12 @@ func context_set_asset_lib() -> void:
 
 
 func context_display_a_script(scene_path: String) -> void:
-	EditorInterface.open_scene_from_path(scene_path)
-	var script = EditorInterface.get_edited_scene_root().get_script()
-	EditorInterface.edit_script(script)
+	queue_command(func() -> void:
+		EditorInterface.open_scene_from_path(scene_path)
+		var script = EditorInterface.get_edited_scene_root().get_script()
+		EditorInterface.edit_script(script)
+	)
+
 
 func scroll_script(line: int = 0 , duration := 1.0) -> void:
 	queue_command(func () -> void:

@@ -13,12 +13,12 @@ content_margin_left = 8.0
 content_margin_top = 4.0
 content_margin_right = 8.0
 content_margin_bottom = 4.0
-bg_color = Color(1, 0.835294, 0, 1)
+bg_color = Color(0.839216, 0.858824, 0.886275, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
-shadow_color = Color(0.807843, 0.486275, 0, 1)
+shadow_color = Color(0.623529, 0.662745, 0.721569, 1)
 shadow_size = 1
 shadow_offset = Vector2(0, 4)
 
@@ -27,12 +27,12 @@ content_margin_left = 8.0
 content_margin_top = 4.0
 content_margin_right = 8.0
 content_margin_bottom = 4.0
-bg_color = Color(1, 0.835294, 0, 1)
+bg_color = Color(0.760784, 0.784314, 0.831373, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
-shadow_color = Color(0.807843, 0.486275, 0, 1)
+shadow_color = Color(0.505882, 0.54902, 0.615686, 1)
 shadow_size = 1
 shadow_offset = Vector2(0, 4)
 
@@ -41,12 +41,12 @@ content_margin_left = 8.0
 content_margin_top = 4.0
 content_margin_right = 8.0
 content_margin_bottom = 4.0
-bg_color = Color(1, 0.835294, 0, 1)
+bg_color = Color(0.584314, 0.623529, 0.690196, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
-shadow_color = Color(0.807843, 0.486275, 0, 1)
+shadow_color = Color(0.47451, 0.517647, 0.584314, 1)
 shadow_size = 1
 shadow_offset = Vector2(0, 4)
 
@@ -76,7 +76,7 @@ corner_radius_bottom_left = 8
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_biu8p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8fhq1"]
-bg_color = Color(0.305882, 0.443137, 0.615686, 1)
+bg_color = Color(0.760784, 0.784314, 0.831373, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -84,12 +84,12 @@ corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7p8bb"]
 resource_local_to_scene = true
-bg_color = Color(0.164706, 0.247059, 0.380392, 1)
+bg_color = Color(0.207843, 0.239216, 0.290196, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
-shadow_color = Color(0.0705882, 0.0784314, 0.133333, 1)
+shadow_color = Color(0, 0, 0, 1)
 shadow_size = 1
 shadow_offset = Vector2(0, 4)
 
@@ -120,7 +120,6 @@ MarginContainer/constants/margin_left = 16
 MarginContainer/constants/margin_right = 16
 MarginContainer/constants/margin_top = 16
 NextButton/base_type = &"Button"
-NextButton/colors/font_hover_color = Color(0.521569, 0.184314, 0.0745098, 1)
 NextButton/font_sizes/font_size = 18
 NextButton/fonts/font = ExtResource("2_dcrkv")
 NextButton/styles/focus = SubResource("StyleBoxEmpty_k5cck")

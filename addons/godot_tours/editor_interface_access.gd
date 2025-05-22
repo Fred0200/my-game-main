@@ -8,6 +8,7 @@ var base_control: Control = null
 
 # Dialog windows
 var proj_settings_dialog : Window = null
+var attach_script_dialog : AcceptDialog = null
 
 # Project Settings Editor
 var proj_settings_tabs : TabContainer = null
@@ -464,7 +465,11 @@ func _init() -> void:
 
 	# Dialog windows
 	proj_settings_dialog = EditorInterface.get_base_control().get_child(6)
-	
+	attach_script_dialog = scene_dock.get_child(7)
+	attach_script_dialog.always_on_top = false
+	attach_script_dialog.exclusive = false
+
+
 	# Project Settings Editor
 	proj_settings_tabs = proj_settings_dialog.get_child(0)
 	input_map_window = proj_settings_tabs.get_child(1)
