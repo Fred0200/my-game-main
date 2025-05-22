@@ -8,6 +8,10 @@ extends CharacterBody2D
 @onready var destroy_sfx = preload("res://sounds/destroy_sfx.tscn")
 @onready var fsm: Node = $fsm
 @onready var camera: Camera2D = $camera
+@onready var shoot_cooldown: Timer = $shoot_cooldown
+
+const BULLET_SCENE = preload("res://prefabs/bullet.tscn")
+@onready var bullet_position: Marker2D = $bullet_position
 
 const SPEED = 160
 const JUMP_VELOCITY = -280
@@ -22,6 +26,12 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+
+	if Input.is_action_pressed('shoot') and shoot_cooldown.is_stopped():
+		shoot_bullet()
+
+
+
 
 #
 	## Handle jump.
@@ -68,7 +78,13 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
+	if Input.is_action_pressed('ui_left'):
+		if sign(bullet_position.position.x) == 1:
+			bullet_position.position.x *= -1
 	
+	if Input.is_action_pressed('ui_right'):
+		if sign(bullet_position.position.x) == -1:
+			bullet_position.position.x *= -1
 	
 func move_player():
 	var direction = Input.get_axis('ui_left', 'ui_right')
@@ -147,4 +163,17 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 			anim.play("death")
 			await anim.animation_finished
 			queue_free()
- 
+			
+func shoot_bullet():
+	var bullet_instance = BULLET_SCENE.instantiate()
+	
+	if sign(bullet_position.position.x) == 1:
+		bullet_instance.set_direction(1)
+	else:
+		bullet_instance.set_direction(-1)
+	
+	# the same as get_parent().add_child(bullet_instance)
+	add_sibling(bullet_instance)
+	
+	bullet_instance.global_position = bullet_position.global_position
+	shoot_cooldown.start()

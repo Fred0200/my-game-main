@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://3or6r8nvvcyw"]
+[gd_scene load_steps=3 format=3 uid="uid://3or6r8nvvcyw"]
 
 [ext_resource type="Script" path="res://scripts/player/bullet.gd" id="1_0xstq"]
+[ext_resource type="Texture2D" uid="uid://dyq7h06cko50" path="res://icon.svg" id="2_dpjy4"]
 
 [node name="bullet" type="Area2D"]
 script = ExtResource("1_0xstq")
@@ -8,6 +9,7 @@ script = ExtResource("1_0xstq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_dpjy4")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 
