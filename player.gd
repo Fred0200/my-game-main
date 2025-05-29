@@ -21,14 +21,18 @@ var is_attacking = false
 var points = 00000
 var player_health = 100
 var toma_pau = 100   # damage
+var number_of_knifes = 3 
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	if Input.is_action_pressed('shoot') and shoot_cooldown.is_stopped():
+	if (Input.is_action_pressed('shoot') and 
+			shoot_cooldown.is_stopped() 
+			and number_of_knifes > 0): 
 		shoot_bullet()
+		number_of_knifes -= 1
 
 
 
@@ -123,7 +127,8 @@ func take_damage():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("collectable"):
 		body.queue_free()
-		points += 1
+		
+		Global.coins += 1
 		
 	if body.is_in_group("block"):
 		var new_coin = moeda

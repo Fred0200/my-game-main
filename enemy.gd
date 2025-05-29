@@ -71,8 +71,14 @@ func _on_anim_animation_finished() -> void:
 
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	if area.name == "hitbox":
-		health = health - 50
+	if area.is_in_group("hitbox") or area.name == "hitbox":
+	
+		if area.name == "hitbox":
+			health = health - 50
+		else:
+			health -= 25
+			area.queue_free()
+		
 		if health > 0:
 			anim.play("hurt")
 		else:

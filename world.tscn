@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://lcx5ioweclj0"]
+[gd_scene load_steps=13 format=4 uid="uid://lcx5ioweclj0"]
 
 [ext_resource type="Texture2D" uid="uid://clqn3fyu4tg2w" path="res://assets/fundo/1.png" id="1_fpl8r"]
 [ext_resource type="Texture2D" uid="uid://b7gmrohl5imw0" path="res://assets/fundo/2.png" id="2_8ojmo"]
@@ -390,9 +390,6 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 15
 sources/0 = SubResource("TileSetAtlasSource_yxlka")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kl3wo"]
-size = Vector2(34, 34)
-
 [node name="world" type="Node2D"]
 
 [node name="fundo" type="Node2D" parent="."]
@@ -492,11 +489,5 @@ scale = Vector2(1.5, 1.5)
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
-
-[node name="Area2D" type="Area2D" parent="." groups=["block"]]
-position = Vector2(1072, 224)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_kl3wo")
 
 [node name="HUD" parent="." instance=ExtResource("10_xi2bg")]

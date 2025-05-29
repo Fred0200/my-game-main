@@ -24,7 +24,7 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	#coins_counter.text = str("%04d" % Globals.coins)
+	coins_counter.text = str("%04d" % Global.coins)
 	#score_counter.text = str("%06d" % Globals.score)
 	#life_counter.text = str("%02d" % Globals.player_life)
 	
