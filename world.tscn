@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://lcx5ioweclj0"]
+[gd_scene load_steps=19 format=4 uid="uid://lcx5ioweclj0"]
 
 [ext_resource type="Texture2D" uid="uid://clqn3fyu4tg2w" path="res://assets/fundo/1.png" id="1_fpl8r"]
 [ext_resource type="Texture2D" uid="uid://b7gmrohl5imw0" path="res://assets/fundo/2.png" id="2_8ojmo"]
@@ -9,7 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://0lxyh3bqfan5" path="res://Tiles/Tiles/Assets/Assets.png" id="7_njvat"]
 [ext_resource type="PackedScene" uid="uid://o32n87il2cbw" path="res://prefabs/break_box.tscn" id="9_vidyf"]
 [ext_resource type="PackedScene" uid="uid://ckcujqhqas11k" path="res://prefabs/UI/hud.tscn" id="10_xi2bg"]
+[ext_resource type="Texture2D" uid="uid://cocg53uykdfjc" path="res://assets/touch screen butao/ui_buttons_arrow_left_NORMAL.png" id="11_jh6qe"]
 [ext_resource type="PackedScene" uid="uid://cmhxjflctd2qb" path="res://prefabs/coin.tscn" id="11_v1kj1"]
+[ext_resource type="Texture2D" uid="uid://ch7dw16xy76n3" path="res://assets/touch screen butao/ui_buttons_arrow_left_PRESSED.png" id="12_6bn58"]
+[ext_resource type="Texture2D" uid="uid://bdvu4ahwg1arq" path="res://assets/touch screen butao/ui_buttons_arrow_up_NORMAL.png" id="13_s1aki"]
+[ext_resource type="Texture2D" uid="uid://dhf7dcc3834ls" path="res://assets/touch screen butao/ui_buttons_arrow_up_PRESSED.png" id="14_hb7sw"]
+[ext_resource type="Texture2D" uid="uid://camxpoq856dca" path="res://assets/touch screen butao/ui_buttons_arrow_right_NORMAL.png" id="15_v58hr"]
+[ext_resource type="Texture2D" uid="uid://dotjxektvv16c" path="res://assets/touch screen butao/ui_buttons_arrow_right_PRESSED.png" id="16_2jp7f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yxlka"]
 texture = ExtResource("7_njvat")
@@ -491,3 +497,29 @@ scale = Vector2(1.5, 1.5)
 autostart = true
 
 [node name="HUD" parent="." instance=ExtResource("10_xi2bg")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="left_btn" type="TouchScreenButton" parent="CanvasLayer"]
+position = Vector2(51, 253)
+texture_normal = ExtResource("11_jh6qe")
+texture_pressed = ExtResource("12_6bn58")
+action = "ui_left"
+visibility_mode = 1
+
+[node name="up_btn" type="TouchScreenButton" parent="CanvasLayer"]
+position = Vector2(86, 216)
+texture_normal = ExtResource("13_s1aki")
+texture_pressed = ExtResource("14_hb7sw")
+action = "ui_accept"
+visibility_mode = 1
+
+[node name="right_btn" type="TouchScreenButton" parent="CanvasLayer"]
+position = Vector2(122, 253)
+texture_normal = ExtResource("15_v58hr")
+texture_pressed = ExtResource("16_2jp7f")
+action = "ui_right"
+visibility_mode = 1
+
+[node name="attack_btn" type="TouchScreenButton" parent="CanvasLayer"]
+visibility_mode = 1
