@@ -25,11 +25,15 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	coins_counter.text = str("%04d" % Global.coins)
-	#score_counter.text = str("%06d" % Globals.score)
-	#life_counter.text = str("%02d" % Globals.player_life)
+	score_counter.text = str("%06d" % Global.score)
+	life_counter.text = str("%02d" % Global.player_life)
 	
 	if minutes == 0 and seconds == 0:
 		emit_signal("time_is_up")
+	
+	
+
+
 
 func _on_clock_timer_timeout():
 	if seconds == 0:

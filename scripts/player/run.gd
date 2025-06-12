@@ -19,3 +19,4 @@ func Update(_delta:float):
 
 func Physics_Update(_delta):
 	player.move_player()
+	print(Global.coins)

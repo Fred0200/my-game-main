@@ -11,8 +11,9 @@ func _on_body_entered(body):
 		coin_sfx.play()
 		# evita a colisao dupla de moedas, fa
 		await $collision.call_deferred("queue_free")
-		#Globals.coins += coins
-
+		Global.coins += coins
+		Global.score += 100
+		
 
 func _on_animated_sprite_2d_animation_finished():
 	if $anim.animation == "collect":
