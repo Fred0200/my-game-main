@@ -64,7 +64,7 @@ func _on_detect_player_body_entered(body: Node2D) -> void:
 		#anim.play("attack 1")
 		animation_player.play('toma_pau')
 		is_attacking = true
-		Global.score += 500
+		
 
 func _on_anim_animation_finished() -> void:
 	is_attacking = false
@@ -75,6 +75,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	
 		if area.name == "hitbox":
 			health = health - 50
+			Global.score += 500
 		else:
 			health -= 25
 			area.queue_free()
